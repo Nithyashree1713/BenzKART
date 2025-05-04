@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Us - BenzKART</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: url('background.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+
+    .navbar h1 {
+      font-size: 24px;
+      color: #333;
+    }
+
+    .navbar button {
+      margin-left: 10px;
+      padding: 10px 20px;
+      font-weight: bold;
+      background-color: #3366cc;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .navbar button:hover {
+      background-color: #254e9c;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 20px;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+      animation: popIn 0.3s ease-in-out;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      position: relative;
+    }
+
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 28px;
+      cursor: pointer;
+      color: #999;
+    }
+
+    .modal-content input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+
+    .modal-content button {
+      background-color: #3366cc;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      width: 100%;
+      margin-top: 10px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .modal-content button:hover {
+      background-color: #254e9c;
+    }
+
+    @keyframes popIn {
+      from {
+        transform: scale(0.95);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 60vh;
+      font-size: 18px;
+      font-weight: 500;
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 30px;
+      border-radius: 15px;
+      max-width: 600px;
+      margin: 50px auto;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .contact-info h1 {
+      font-size: 32px;
+      margin-bottom: 20px;
+      color: #3366cc;
+    }
+  </style>
+</head>
+<body>
+  <div style="background-color: #c5c4c4; padding: 5px 20px; font-size: 14px; display: flex; justify-content: space-between; align-items: center;">
+    <div><h3>Hi! Welcome to BenzKART Auto Parts Store</h3></div>
+    <div>
+      <a href="catalogue.html" style="text-decoration: none">Catalogue</a> |
+      <a href="faq.html">FAQ</a> |
+      <a href="contact.html">Contact Us</a> |
+      <button onclick="openModal('signinModal')">Sign In</button>
+      <button onclick="openModal('registerModal')">Register</button>
+    </div>
+  </div>
+
+  <!-- Sign In Modal -->
+  <div id="signinModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('signinModal')">&times;</span>
+      <h2>Welcome Back to <span style="color:black;">Benz</span><span style="color:#3366cc;">KART</span></h2>
+      <form>
+        <input type="email" placeholder="Email" required />
+        <input type="password" placeholder="Password" required />
+        <button type="submit">Sign In</button>
+      </form>
+      <p>Don't have an account? <a href="#" onclick="switchModal('signinModal', 'registerModal')">Register</a></p>
+    </div>
+  </div>
+
+  <!-- Register Modal -->
+  <div id="registerModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('registerModal')">&times;</span>
+      <h2>Create your <span style="color:black;">Benz</span><span style="color:#3366cc;">KART</span> Account</h2>
+      <form>
+        <input type="text" placeholder="Full Name" required />
+        <input type="email" placeholder="Email" required />
+        <input type="password" placeholder="Create Password" required />
+        <button type="submit">Register</button>
+      </form>
+      <p>Already have an account? <a href="#" onclick="switchModal('registerModal', 'signinModal')">Sign In</a></p>
+    </div>
+  </div>
+
+  <!-- Modal Script -->
+  <script>
+    function openModal(id) {
+      document.getElementById(id).style.display = 'flex';
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+
+    function switchModal(currentId, targetId) {
+      closeModal(currentId);
+      openModal(targetId);
+    }
+
+    window.onclick = function (e) {
+      const modals = document.querySelectorAll('.modal');
+      modals.forEach(modal => {
+        if (e.target === modal) {
+          modal.style.display = 'none';
+        }
+      });
+    };
+  </script>
+
+  <!-- Header -->
+  <header style="display: flex; align-items: center; justify-content: space-between; padding: 15px 20px; border-bottom: 1px solid #ddd; flex-wrap: wrap;">
+    <div style="display: flex; align-items: center; gap: 10px; min-width: 220px;">
+      <span style="font-size: 24px; font-weight: bold;"><h2>Benz<span style="color: #3366cc;">KART</span></h2></span>
+    </div>
+
+    <div style="flex-grow: 1; max-width: 600px; display: flex; align-items: center; margin: 10px;">
+      <button style="background: none; border: none; font-weight: bold; display: flex; align-items: center; margin-right: 10px; font-size: 16px;">
+        ☰ &nbsp; Shop by Category
+      </button>
+      <select style="padding: 5px; margin-right: 5px;">
+        <option>All Categories</option>
+      </select>
+      <input type="text" placeholder="Search for products, brands, shops,..." style="flex-grow: 1; padding: 6px;" />
+      <button style="background-color: #eee; padding: 6px 10px; border: none; cursor: pointer;">🔍</button>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 30px; min-width: 250px; justify-content: flex-end;">
+      <a href="#" style="text-decoration: none; color: black; display: flex; align-items: center; gap: 5px;">🎧 Help Center</a>
+      <a href="#" style="text-decoration: none; color: black; font-size: 18px;">🤍 Wishlist</a>
+      <a href="#" style="text-decoration: none; color: black; display: flex; flex-direction: column; align-items: center;">
+        🛒 <span style="font-size: 14px;">Shopping Cart</span>
+        <strong style="font-size: 14px;">$0.00</strong>
+      </a>
+    </div>
+  </header>
+
+  <!-- Centered Contact Info -->
+  <main class="contact-info">
+    <h1>Contact Us</h1>
+    <p>📍 Address: Palladam Road, (Near Bharath School), Tirupur - 5</p>
+    <p>📞 Phone: 81220 12881 / 0421 - 4960881</p>
+    <p>📧 Email: support@benzkart.in</p>
+  </main>
+</body>
+</html>
